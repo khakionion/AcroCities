@@ -7,6 +7,7 @@
 //
 
 #import "S3IntroViewController.h"
+#import "S3GameFindingViewController.h"
 
 #import <GameKit/GameKit.h>
 #import <Parse/Parse.h>
@@ -42,6 +43,8 @@
         [UIView animateWithDuration:1.0f animations:^(){
             [self.loadingSpinner setAlpha:1.0f];
         }];
+        S3GameFindingViewController* gfvc = [[S3GameFindingViewController alloc] initWithNibName:@"S3GameFindingViewController" bundle:nil];
+        [self presentViewController:gfvc animated:YES completion:^(){}];
     }
 }
 

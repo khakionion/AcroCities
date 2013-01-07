@@ -33,6 +33,9 @@
 		DFA7FEAB16990B2800F9BC4C /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DFA7FEA016990B2800F9BC4C /* StoreKit.framework */; };
 		DFA7FEAC16990B2800F9BC4C /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DFA7FEA116990B2800F9BC4C /* SystemConfiguration.framework */; };
 		DFB47421169A91040019B53C /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DFB47420169A91040019B53C /* GameKit.framework */; };
+		DFB47425169AA9390019B53C /* S3GameFindingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DFB47423169AA9390019B53C /* S3GameFindingViewController.m */; };
+		DFB47426169AA9390019B53C /* S3GameFindingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DFB47424169AA9390019B53C /* S3GameFindingViewController.xib */; };
+		DFB47428169AAA090019B53C /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DFB47427169AAA090019B53C /* MapKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -68,6 +71,10 @@
 		DFA7FEA116990B2800F9BC4C /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		DFB4741F169919970019B53C /* AcroCities.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = AcroCities.entitlements; sourceTree = "<group>"; };
 		DFB47420169A91040019B53C /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
+		DFB47422169AA9390019B53C /* S3GameFindingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = S3GameFindingViewController.h; sourceTree = "<group>"; };
+		DFB47423169AA9390019B53C /* S3GameFindingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = S3GameFindingViewController.m; sourceTree = "<group>"; };
+		DFB47424169AA9390019B53C /* S3GameFindingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = S3GameFindingViewController.xib; sourceTree = "<group>"; };
+		DFB47427169AAA090019B53C /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,6 +82,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DFB47428169AAA090019B53C /* MapKit.framework in Frameworks */,
 				DFB47421169A91040019B53C /* GameKit.framework in Frameworks */,
 				DFA7FEA216990B2800F9BC4C /* Accounts.framework in Frameworks */,
 				DFA7FEA316990B2800F9BC4C /* AdSupport.framework in Frameworks */,
@@ -130,6 +138,7 @@
 				DFA7FE9F16990B2800F9BC4C /* Social.framework */,
 				DFA7FEA016990B2800F9BC4C /* StoreKit.framework */,
 				DFA7FEA116990B2800F9BC4C /* SystemConfiguration.framework */,
+				DFB47427169AAA090019B53C /* MapKit.framework */,
 				DFA7FE9516990AF400F9BC4C /* AudioToolbox.framework */,
 				DFA7FE9316990A6300F9BC4C /* CoreData.framework */,
 				DFA7FE91169906B600F9BC4C /* Parse.framework */,
@@ -144,13 +153,15 @@
 		DFA7FE711699067800F9BC4C /* AcroCities */ = {
 			isa = PBXGroup;
 			children = (
-				DFB4741F169919970019B53C /* AcroCities.entitlements */,
+				DFA7FE721699067800F9BC4C /* Supporting Files */,
 				DFA7FE7A1699067800F9BC4C /* S3AppDelegate.h */,
 				DFA7FE7B1699067800F9BC4C /* S3AppDelegate.m */,
 				DFA7FE831699067800F9BC4C /* S3IntroViewController.h */,
 				DFA7FE841699067800F9BC4C /* S3IntroViewController.m */,
 				DFA7FE861699067800F9BC4C /* S3IntroViewController.xib */,
-				DFA7FE721699067800F9BC4C /* Supporting Files */,
+				DFB47422169AA9390019B53C /* S3GameFindingViewController.h */,
+				DFB47423169AA9390019B53C /* S3GameFindingViewController.m */,
+				DFB47424169AA9390019B53C /* S3GameFindingViewController.xib */,
 			);
 			path = AcroCities;
 			sourceTree = "<group>";
@@ -158,6 +169,7 @@
 		DFA7FE721699067800F9BC4C /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				DFB4741F169919970019B53C /* AcroCities.entitlements */,
 				DFA7FE731699067800F9BC4C /* AcroCities-Info.plist */,
 				DFA7FE741699067800F9BC4C /* InfoPlist.strings */,
 				DFA7FE771699067800F9BC4C /* main.m */,
@@ -226,6 +238,7 @@
 				DFA7FE801699067800F9BC4C /* Default@2x.png in Resources */,
 				DFA7FE821699067800F9BC4C /* Default-568h@2x.png in Resources */,
 				DFA7FE881699067800F9BC4C /* S3IntroViewController.xib in Resources */,
+				DFB47426169AA9390019B53C /* S3GameFindingViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -239,6 +252,7 @@
 				DFA7FE781699067800F9BC4C /* main.m in Sources */,
 				DFA7FE7C1699067800F9BC4C /* S3AppDelegate.m in Sources */,
 				DFA7FE851699067800F9BC4C /* S3IntroViewController.m in Sources */,
+				DFB47425169AA9390019B53C /* S3GameFindingViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
