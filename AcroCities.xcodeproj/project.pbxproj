@@ -32,6 +32,7 @@
 		DFA7FEAA16990B2800F9BC4C /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DFA7FE9F16990B2800F9BC4C /* Social.framework */; };
 		DFA7FEAB16990B2800F9BC4C /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DFA7FEA016990B2800F9BC4C /* StoreKit.framework */; };
 		DFA7FEAC16990B2800F9BC4C /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DFA7FEA116990B2800F9BC4C /* SystemConfiguration.framework */; };
+		DFB47421169A91040019B53C /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DFB47420169A91040019B53C /* GameKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -66,6 +67,7 @@
 		DFA7FEA016990B2800F9BC4C /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		DFA7FEA116990B2800F9BC4C /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		DFB4741F169919970019B53C /* AcroCities.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = AcroCities.entitlements; sourceTree = "<group>"; };
+		DFB47420169A91040019B53C /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +75,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DFB47421169A91040019B53C /* GameKit.framework in Frameworks */,
 				DFA7FEA216990B2800F9BC4C /* Accounts.framework in Frameworks */,
 				DFA7FEA316990B2800F9BC4C /* AdSupport.framework in Frameworks */,
 				DFA7FEA416990B2800F9BC4C /* CFNetwork.framework in Frameworks */,
@@ -133,6 +136,7 @@
 				DFA7FE6B1699067800F9BC4C /* UIKit.framework */,
 				DFA7FE6D1699067800F9BC4C /* Foundation.framework */,
 				DFA7FE6F1699067800F9BC4C /* CoreGraphics.framework */,
+				DFB47420169A91040019B53C /* GameKit.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
