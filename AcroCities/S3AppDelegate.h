@@ -8,12 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
-@class S3ViewController;
+@class S3IntroViewController;
 
 @interface S3AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 
-@property (strong, nonatomic) S3ViewController *viewController;
+@property (strong, nonatomic) S3IntroViewController *viewController;
 
 @end

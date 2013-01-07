@@ -8,22 +8,49 @@
 
 #import "S3AppDelegate.h"
 
-#import "S3ViewController.h"
+#import "S3IntroViewController.h"
+
+#import <Parse/Parse.h>
 
 @implementation S3AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    //Parse set up
+    [Parse setApplicationId:@"SbHMdZO1PekFyf5mwESJPMV5E8et4IFwzvYnN8fK"
+                  clientKey:@"DSzUi4uQwmSNOrCa5jwavXjrYdslHCaYrdh1IrbY"];
+
+    // Register for push notifications
+    [application registerForRemoteNotificationTypes:
+     UIRemoteNotificationTypeBadge |
+     UIRemoteNotificationTypeAlert |
+     UIRemoteNotificationTypeSound];
+    
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
-    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
-        self.viewController = [[S3ViewController alloc] initWithNibName:@"S3ViewController_iPhone" bundle:nil];
-    } else {
-        self.viewController = [[S3ViewController alloc] initWithNibName:@"S3ViewController_iPad" bundle:nil];
-    }
+    self.viewController = [[S3IntroViewController alloc] initWithNibName:@"S3IntroViewController" bundle:nil];
     self.window.rootViewController = self.viewController;
     [self.window makeKeyAndVisible];
+    
     return YES;
+}
+
+- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)newDeviceToken
+{
+    [PFPush storeDeviceToken:newDeviceToken]; // Send parse the device token
+    // Subscribe this user to the broadcast channel, ""
+    [[PFInstallation currentInstallation] addUniqueObject:@"" forKey:@"channels"];
+    [[PFInstallation currentInstallation] saveEventually];
+    NSLog(@"Did register for remote notifications.");
+}
+
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
+    [PFPush handlePush:userInfo];
+    NSLog(@"did receive remote notification");
+}
+
+- (void)application:(UIApplication*)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
+    NSLog(@"oh dear: %@",error);
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application
