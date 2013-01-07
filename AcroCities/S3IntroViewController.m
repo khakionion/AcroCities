@@ -59,15 +59,35 @@
     [user setPassword:self.passwordField.text];
     [user signUpInBackgroundWithBlock:^(BOOL succeeded, NSError* err){
         if (succeeded) {
-            NSLog(@"signup successful.");
+            [UIView animateWithDuration:1.0f animations:^(){
+                [self.registrationView setAlpha:0.0f];
+                [self.loadingSpinner setAlpha:0.0f];
+            }];
         }
         else {
-            NSLog(@"Oh dear, failed to sign up.");
+            [self displayLoginError:err];
         }
     }];
 }
 
 - (IBAction)loginUser:(id)sender {
+    NSString * lowercaseInput = [self.usernameField.text lowercaseString];
+    [PFUser logInWithUsernameInBackground:lowercaseInput password:self.passwordField.text block:^(PFUser* user,NSError* err){
+        if (err == nil) {
+            [UIView animateWithDuration:1.0f animations:^(){
+                [self.registrationView setAlpha:0.0f];
+                [self.loadingSpinner setAlpha:1.0f];
+            }];
+        }
+        else {
+            [self displayLoginError:err];
+        }
+    }];
+}
+
+-(void) displayLoginError:(NSError*)err {
+    UIAlertView * loginFailAlert = [[UIAlertView alloc] initWithTitle:@"Error" message:[err localizedDescription] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+    [loginFailAlert show];
 }
 
 #pragma mark - UITextFieldDelegate
