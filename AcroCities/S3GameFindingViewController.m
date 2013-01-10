@@ -30,6 +30,7 @@
         _locationManager = [[CLLocationManager alloc] init];
         [_locationManager setDelegate:self];
         [_locationManager startUpdatingLocation];
+        _foundPlaces = @[];
     }
     return self;
 }
@@ -55,9 +56,6 @@
     else return 1;
 }
 
-// Row display. Implementers should *always* try to reuse cells by setting each cell's reuseIdentifier and querying for available reusable cells with dequeueReusableCellWithIdentifier:
-// Cell gets various attributes set automatically based on table (separators) and data source (accessory views, editing controls)
-
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     NSString * placeName = @"No places found...";
     if (_foundPlaces && [_foundPlaces count] > 0) {
@@ -74,23 +72,12 @@
 
 #pragma mark - Core location delegate
 
--(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
+- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
     [manager stopUpdatingLocation];
-    NSLog(@"Found location. Beginning search.");
-    MKLocalSearchRequest * mySearchRequest = [[MKLocalSearchRequest alloc] init];
-    mySearchRequest.naturalLanguageQuery = @"coffee";
-    mySearchRequest.region = MKCoordinateRegionMakeWithDistance(_locationManager.location.coordinate, 100, 100);
-    MKLocalSearch* mySearch = [[MKLocalSearch alloc] initWithRequest:mySearchRequest];
-    [mySearch startWithCompletionHandler:^(MKLocalSearchResponse* resp, NSError* err){
-        if (err == nil && [resp.mapItems count] > 0) {
-            _foundPlaces = resp.mapItems;
-            [self.tableView reloadData];
-        }
-        
-        else if(err != nil) {
-            NSLog(@"Map Error: %@",[err localizedDescription]);
-        }
-    }];
+    NSLog(@"Found location.");
+}
+
+- (void)doSearch {
 }
 
 - (IBAction)createNewGame:(id)sender {
@@ -101,4 +88,29 @@
 - (IBAction)cancelAction:(id)sender {
     [self dismissViewControllerAnimated:YES completion:^(){}];
 }
+
+#pragma mark - UISearchBarDelegate
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
+    MKLocalSearchRequest * mySearchRequest = [[MKLocalSearchRequest alloc] init];
+    mySearchRequest.naturalLanguageQuery = searchBar.text;
+    mySearchRequest.region = MKCoordinateRegionMakeWithDistance(_locationManager.location.coordinate, 5000, 5000);
+    MKLocalSearch* mySearch = [[MKLocalSearch alloc] initWithRequest:mySearchRequest];
+    [mySearch startWithCompletionHandler:^(MKLocalSearchResponse* resp, NSError* err){
+        if (err == nil && [resp.mapItems count] > 0) {
+            _foundPlaces = resp.mapItems;
+            [self.searchDisplayController.searchResultsTableView reloadData];
+        }
+        else if(err != nil) {
+            NSLog(@"Map Error: %@",[err localizedDescription]);
+        }
+    }];
+}
+
+#pragma mark - UISearchDisplayDelegate
+
+- (BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchString:(NSString *)searchString {
+    NSLog(@"reloading data for search string: %@",searchString);
+    return YES;
+}
+
 @end

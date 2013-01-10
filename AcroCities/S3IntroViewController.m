@@ -8,6 +8,7 @@
 
 #import "S3IntroViewController.h"
 #import "S3GameFindingViewController.h"
+#import "S3MyGamesViewController.h"
 
 #import <GameKit/GameKit.h>
 #import <Parse/Parse.h>
@@ -21,12 +22,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
-    /*PFObject *testObject = [PFObject objectWithClassName:@"TestObject"];
-    [testObject setObject:@"bar" forKey:@"foo"];
-    [testObject save];*/
-    
-    //make the title look nice
+	//make the title look nice
     NSMutableAttributedString* text = [[self.titleLabel attributedText] mutableCopy];
     [text addAttribute:NSKernAttributeName value:@-2.0 range:NSMakeRange(0, [text length])];
     [self.titleLabel setAttributedText:text];
@@ -55,6 +51,8 @@
 }
 
 - (IBAction)showMyGames:(id)sender {
+    S3MyGamesViewController * mgvc = [[S3MyGamesViewController alloc] initWithNibName:@"S3MyGamesViewController" bundle:nil];
+    [self presentViewController:mgvc animated:YES completion:^(){}];
 }
 
 - (IBAction)findGames:(id)sender {
