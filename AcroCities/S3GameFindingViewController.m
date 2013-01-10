@@ -7,6 +7,7 @@
 //
 
 #import "S3GameFindingViewController.h"
+#import "S3GameCreatingViewController.h"
 
 #import <Parse/Parse.h>
 #import <CoreLocation/CoreLocation.h>
@@ -85,10 +86,19 @@
             _foundPlaces = resp.mapItems;
             [self.tableView reloadData];
         }
+        
         else if(err != nil) {
             NSLog(@"Map Error: %@",[err localizedDescription]);
         }
     }];
 }
 
+- (IBAction)createNewGame:(id)sender {
+    S3GameCreatingViewController * gcvc = [[S3GameCreatingViewController alloc] initWithNibName:@"S3GameCreatingViewController" bundle:nil];
+    [self presentViewController:gcvc animated:YES completion:^(){}];
+}
+
+- (IBAction)cancelAction:(id)sender {
+    [self dismissViewControllerAnimated:YES completion:^(){}];
+}
 @end

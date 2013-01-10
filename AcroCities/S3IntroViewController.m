@@ -40,11 +40,11 @@
         }];
     }
     else {
+        self.loggedInLabel.text = [NSString stringWithFormat:@"Logged in as %@",[[PFUser currentUser] email]];
+        [self.loggedInView setAlpha:0.0f];
         [UIView animateWithDuration:1.0f animations:^(){
-            [self.loadingSpinner setAlpha:1.0f];
+            [self.loggedInView setAlpha:1.0f];
         }];
-        S3GameFindingViewController* gfvc = [[S3GameFindingViewController alloc] initWithNibName:@"S3GameFindingViewController" bundle:nil];
-        [self presentViewController:gfvc animated:YES completion:^(){}];
     }
 }
 
@@ -52,6 +52,14 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (IBAction)showMyGames:(id)sender {
+}
+
+- (IBAction)findGames:(id)sender {
+    S3GameFindingViewController * gfvc = [[S3GameFindingViewController alloc] initWithNibName:@"S3GameFindingViewController" bundle:nil];
+    [self presentViewController:gfvc animated:YES completion:^(){}];
 }
 
 - (IBAction)registerUser:(id)sender {
@@ -62,9 +70,11 @@
     [user setPassword:self.passwordField.text];
     [user signUpInBackgroundWithBlock:^(BOOL succeeded, NSError* err){
         if (succeeded) {
+            self.loggedInLabel.text = [NSString stringWithFormat:@"Logged in as %@",[[PFUser currentUser] email]];
             [UIView animateWithDuration:1.0f animations:^(){
                 [self.registrationView setAlpha:0.0f];
-                [self.loadingSpinner setAlpha:0.0f];
+                [self.loggedInView setAlpha:1.0f];
+                
             }];
         }
         else {
@@ -77,15 +87,25 @@
     NSString * lowercaseInput = [self.usernameField.text lowercaseString];
     [PFUser logInWithUsernameInBackground:lowercaseInput password:self.passwordField.text block:^(PFUser* user,NSError* err){
         if (err == nil) {
+            self.loggedInLabel.text = [NSString stringWithFormat:@"Logged in as %@",[[PFUser currentUser] email]];
             [UIView animateWithDuration:1.0f animations:^(){
                 [self.registrationView setAlpha:0.0f];
-                [self.loadingSpinner setAlpha:1.0f];
+                [self.loggedInView setAlpha:1.0f];
             }];
         }
         else {
             [self displayLoginError:err];
         }
     }];
+}
+
+- (IBAction)logOut:(id)sender {
+    [PFUser logOut];
+    [self.loggedInView setAlpha:0.0f];
+    [self.registrationView setAlpha:1.0f];
+    [self.loadingSpinner setAlpha:0.0f];
+    [self.usernameField setText:@""];
+    [self.passwordField setText:@""];
 }
 
 -(void) displayLoginError:(NSError*)err {

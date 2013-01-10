@@ -19,7 +19,16 @@
 @property (weak, nonatomic) IBOutlet UITextField *usernameField;
 @property (weak, nonatomic) IBOutlet UITextField *passwordField;
 
+//UI for logged in users
+@property (strong, nonatomic) IBOutlet UIView *loggedInView;
+@property (weak, nonatomic) IBOutlet UILabel *loggedInLabel;
+@property (weak, nonatomic) IBOutlet UIButton *findGameButton;
+@property (weak, nonatomic) IBOutlet UIButton *myGamesButton;
+
+- (IBAction)showMyGames:(id)sender;
+- (IBAction)findGames:(id)sender;
 - (IBAction)registerUser:(id)sender;
 - (IBAction)loginUser:(id)sender;
+- (IBAction)logOut:(id)sender;
 
 @end

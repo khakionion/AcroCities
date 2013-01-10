@@ -11,5 +11,7 @@
 
 @interface S3GameFindingViewController : UIViewController <CLLocationManagerDelegate,UITableViewDataSource,UITableViewDelegate,UISearchBarDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+- (IBAction)createNewGame:(id)sender;
+- (IBAction)cancelAction:(id)sender;
 
 @end
