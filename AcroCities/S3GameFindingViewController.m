@@ -29,7 +29,6 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-        _foundPlaces = @[];
     }
     return self;
 }
@@ -47,6 +46,7 @@
             [self searchForNearbyGames];
         }
     }];
+    [self.tableView reloadData];
 }
 
 - (void)didReceiveMemoryWarning
@@ -58,24 +58,26 @@
 #pragma mark - UITableViewDataSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    if(_foundPlaces) {
+    if([_foundPlaces count] > 0) {
         return [_foundPlaces count];
     }
     else return 1;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSString * placeName = @"No places found...";
-    if (_foundPlaces && [_foundPlaces count] > 0) {
+    NSString * placeName = @"Invalid Name";
+    if ([_foundPlaces count] > 0) {
         MKMapItem * nextItem = [_foundPlaces objectAtIndex:indexPath.row];
-        placeName = nextItem.name;
+        if (nextItem.name) {
+            placeName = nextItem.name;
+        }
     }
     else {
         UITableViewCell* newCell = [tableView dequeueReusableCellWithIdentifier:@"NoneFound"];
         if (newCell == nil) {
             newCell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"NoneFound"];
         }
-        [[newCell textLabel] setText:@"No nearby games found. :("];
+        placeName = @"No nearby games. :(";
     }
     UITableViewCell* newCell = [tableView dequeueReusableCellWithIdentifier:@"Venue"];
     if (newCell == nil) {
@@ -134,8 +136,10 @@
 - (void)searchForNearbyGames {
     PFQuery* nearbyGamesQuery = [PFQuery queryWithClassName:@"Game"];
     [nearbyGamesQuery whereKey:@"centroid" nearGeoPoint:_currentLocation withinKilometers:1.0];
-    _foundPlaces = [nearbyGamesQuery findObjects];
-    [self.tableView reloadData];
+    [nearbyGamesQuery findObjectsInBackgroundWithBlock:^(NSArray* objects, NSError* error){
+        _foundPlaces = objects;
+        [self.tableView reloadData];
+    }];
 }
 
 @end

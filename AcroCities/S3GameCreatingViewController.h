@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface S3GameCreatingViewController : UIViewController
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *creationSpinner;
 @property (weak, nonatomic) IBOutlet UITextField *lobbyNameField;
 - (IBAction)createGame:(id)sender;
 - (IBAction)cancelAction:(id)sender;

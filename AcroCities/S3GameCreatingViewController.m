@@ -41,8 +41,11 @@
     PFObject *gameObject = [PFObject objectWithClassName:@"Game"];
     [gameObject setObject:[[PFUser currentUser] email] forKey:@"creator"];
     [gameObject setObject:self.lobbyNameField.text forKey:@"lobbyName"];
-    [gameObject save];
-    [self dismissViewControllerAnimated:YES completion:^(){}];
+    [self.creationSpinner startAnimating];
+    [gameObject saveInBackgroundWithBlock:^(BOOL success, NSError* error){
+        [self dismissViewControllerAnimated:YES completion:^(){}];
+        [self.creationSpinner stopAnimating];
+    }];
 }
 
 - (IBAction)cancelAction:(id)sender {
