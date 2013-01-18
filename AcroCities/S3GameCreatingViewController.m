@@ -41,6 +41,12 @@
     PFObject *gameObject = [PFObject objectWithClassName:@"Game"];
     [gameObject setObject:[[PFUser currentUser] email] forKey:@"creator"];
     [gameObject setObject:self.lobbyNameField.text forKey:@"lobbyName"];
+    if (self.gameLocation) {
+        [gameObject setObject:self.gameLocation forKey:@"centroid"];
+    }
+    else {
+        [gameObject setObject:[NSNull null] forKey:@"centroid"];
+    }
     [self.creationSpinner startAnimating];
     [gameObject saveInBackgroundWithBlock:^(BOOL success, NSError* error){
         [self dismissViewControllerAnimated:YES completion:^(){}];

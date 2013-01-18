@@ -14,6 +14,8 @@
 #import <MapKit/MapKit.h>
 
 @interface S3GameFindingViewController () {
+    BOOL _searchingPlaces;
+    NSArray * _foundGames;
     NSArray * _foundPlaces;
     PFGeoPoint * _currentLocation;
 }
@@ -28,7 +30,6 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
     }
     return self;
 }
@@ -36,7 +37,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
     [PFGeoPoint geoPointForCurrentLocationInBackground:^(PFGeoPoint* geoPoint, NSError* error) {
         if (error != nil) {
             NSLog(@"geopoint error: %@",[error localizedDescription]);
@@ -58,7 +58,10 @@
 #pragma mark - UITableViewDataSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    if([_foundPlaces count] > 0) {
+    if(_searchingPlaces == NO && [_foundGames count] > 0) {
+        return [_foundGames count];
+    }
+    else if([_foundPlaces count] > 0) {
         return [_foundPlaces count];
     }
     else return 1;
@@ -66,10 +69,16 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     NSString * placeName = @"Invalid Name";
-    if ([_foundPlaces count] > 0) {
+    if (_searchingPlaces && [_foundPlaces count] > 0) {
         MKMapItem * nextItem = [_foundPlaces objectAtIndex:indexPath.row];
         if (nextItem.name) {
             placeName = nextItem.name;
+        }
+    }
+    else if([_foundGames count] > 0) {
+        PFObject* nextGame = [_foundGames objectAtIndex:indexPath.row];
+        if ([nextGame valueForKey:@"lobbyName"]) {
+            placeName = [nextGame valueForKey:@"lobbyName"];
         }
     }
     else {
@@ -99,7 +108,9 @@
 
 - (IBAction)createNewGame:(id)sender {
     S3GameCreatingViewController * gcvc = [[S3GameCreatingViewController alloc] initWithNibName:@"S3GameCreatingViewController" bundle:nil];
-    [self presentViewController:gcvc animated:YES completion:^(){}];
+    [self presentViewController:gcvc animated:YES completion:^(){
+        [gcvc setGameLocation:_currentLocation];
+    }];
 }
 
 - (IBAction)cancelAction:(id)sender {
@@ -111,7 +122,7 @@
     MKLocalSearchRequest * mySearchRequest = [[MKLocalSearchRequest alloc] init];
     mySearchRequest.naturalLanguageQuery = searchBar.text;
     CLLocationCoordinate2D clLoc = CLLocationCoordinate2DMake(_currentLocation.latitude, _currentLocation.longitude);
-    mySearchRequest.region = MKCoordinateRegionMakeWithDistance(clLoc, 5000, 5000);
+    mySearchRequest.region = MKCoordinateRegionMakeWithDistance(clLoc, 500, 500);
     MKLocalSearch* mySearch = [[MKLocalSearch alloc] initWithRequest:mySearchRequest];
     [mySearch startWithCompletionHandler:^(MKLocalSearchResponse* resp, NSError* err){
         if (err == nil && [resp.mapItems count] > 0) {
@@ -128,16 +139,21 @@
 
 - (BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchString:(NSString *)searchString {
     NSLog(@"reloading data for search string: %@",searchString);
+    _searchingPlaces = YES;
     return YES;
+}
+
+- (void) searchDisplayControllerWillEndSearch:(UISearchDisplayController *)controller {
+    _searchingPlaces = NO;
 }
 
 #pragma mark - private implementation
 
 - (void)searchForNearbyGames {
     PFQuery* nearbyGamesQuery = [PFQuery queryWithClassName:@"Game"];
-    [nearbyGamesQuery whereKey:@"centroid" nearGeoPoint:_currentLocation withinKilometers:1.0];
+    [nearbyGamesQuery whereKey:@"centroid" nearGeoPoint:_currentLocation withinKilometers:100.0];
     [nearbyGamesQuery findObjectsInBackgroundWithBlock:^(NSArray* objects, NSError* error){
-        _foundPlaces = objects;
+        _foundGames = objects;
         [self.tableView reloadData];
     }];
 }

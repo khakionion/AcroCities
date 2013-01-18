@@ -7,10 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <Parse/Parse.h>
 
 @interface S3GameCreatingViewController : UIViewController
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *creationSpinner;
 @property (weak, nonatomic) IBOutlet UITextField *lobbyNameField;
+@property (strong, nonatomic) PFGeoPoint* gameLocation;
 - (IBAction)createGame:(id)sender;
 - (IBAction)cancelAction:(id)sender;
 
