@@ -10,6 +10,8 @@
 
 #import <Parse/Parse.h>
 
+#import "S3GameLobbyViewController.h"
+
 @interface S3MyGamesViewController () {
     NSArray * _foundGames;
 }
@@ -33,7 +35,10 @@
     
     PFQuery* myGamesQuery = [PFQuery queryWithClassName:@"Game"];
     [myGamesQuery whereKey:@"creator" equalTo:[[PFUser currentUser] email]];
-    _foundGames = [myGamesQuery findObjects];
+    [myGamesQuery findObjectsInBackgroundWithBlock:^(NSArray* objects, NSError* error) {
+        _foundGames = objects;
+        [self.tableView reloadData];
+    }];
 
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -119,13 +124,10 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // Navigation logic may go here. Create and push another view controller.
-    /*
-     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-     [self.navigationController pushViewController:detailViewController animated:YES];
-     */
+    PFObject* selectedLobby = [_foundGames objectAtIndex:indexPath.row];
+    S3GameLobbyViewController* glvc = [[S3GameLobbyViewController alloc] initWithNibName:@"S3GameLobbyViewController" bundle:nil];
+    [glvc setLobbyObject:selectedLobby];
+    [self presentViewController:glvc animated:YES completion:^(){}];
 }
 
 - (IBAction)cancelAction:(id)sender {
