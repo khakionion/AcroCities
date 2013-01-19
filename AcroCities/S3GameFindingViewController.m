@@ -151,7 +151,8 @@
 
 - (void)searchForNearbyGames {
     PFQuery* nearbyGamesQuery = [PFQuery queryWithClassName:@"Game"];
-    [nearbyGamesQuery whereKey:@"centroid" nearGeoPoint:_currentLocation withinKilometers:100.0];
+    NSNumber* gameSearchRadius = [[NSUserDefaults standardUserDefaults] valueForKey:@"GameSearchRadius"];
+    [nearbyGamesQuery whereKey:@"centroid" nearGeoPoint:_currentLocation withinKilometers:[gameSearchRadius floatValue]];
     [nearbyGamesQuery findObjectsInBackgroundWithBlock:^(NSArray* objects, NSError* error){
         _foundGames = objects;
         [self.tableView reloadData];
