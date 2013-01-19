@@ -26,7 +26,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [[self lobbyNameLabel] setText:[self.lobbyObject valueForKey:@"lobbyName"]];
+    [self.lobbyNavBar topItem].title = [self.lobbyObject valueForKey:@"lobbyName"];
 }
 
 - (void)didReceiveMemoryWarning

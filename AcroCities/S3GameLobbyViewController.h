@@ -11,8 +11,9 @@
 
 @interface S3GameLobbyViewController : UIViewController
 
+@property (weak, nonatomic) IBOutlet UILabel *activeAcronym;
 @property (strong) PFObject* lobbyObject;
-@property (weak, nonatomic) IBOutlet UILabel *lobbyNameLabel;
+@property (weak, nonatomic) IBOutlet UINavigationBar *lobbyNavBar;
 - (IBAction)leaveLobby:(id)sender;
 
 @end
