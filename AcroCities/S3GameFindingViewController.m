@@ -8,6 +8,7 @@
 
 #import "S3GameFindingViewController.h"
 #import "S3GameCreatingViewController.h"
+#import "S3GameLobbyViewController.h"
 
 #import <Parse/Parse.h>
 #import <CoreLocation/CoreLocation.h>
@@ -94,6 +95,13 @@
     }
     [[newCell textLabel] setText:placeName];
     return newCell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    PFObject* selectedLobby = [_foundGames objectAtIndex:indexPath.row];
+    S3GameLobbyViewController* glvc = [[S3GameLobbyViewController alloc] initWithNibName:@"S3GameLobbyViewController" bundle:nil];
+    [glvc setLobbyObject:selectedLobby];
+    [self presentViewController:glvc animated:YES completion:^(){}];
 }
 
 #pragma mark - Core location delegate

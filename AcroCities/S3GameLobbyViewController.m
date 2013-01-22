@@ -27,6 +27,7 @@
 {
     [super viewDidLoad];
     [self.lobbyNavBar topItem].title = [self.lobbyObject valueForKey:@"lobbyName"];
+    [self.activeAcronym setText:[self.lobbyObject valueForKey:@"acronym"]];
 }
 
 - (void)didReceiveMemoryWarning

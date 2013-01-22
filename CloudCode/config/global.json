@@ -1,0 +1,14 @@
+{
+    "applications": {
+        "AcroCities": {
+            "applicationId": "SbHMdZO1PekFyf5mwESJPMV5E8et4IFwzvYnN8fK", 
+            "masterKey": "tRRiPtegRrmiXiEG1z50n8o4b9whhhOMsWBXMK2y"
+        }, 
+        "_default": {
+            "link": "AcroCities"
+        }
+    }, 
+    "global": {
+        "parseVersion": "1.1.16"
+    }
+}
