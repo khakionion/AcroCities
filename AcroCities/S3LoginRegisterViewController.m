@@ -41,7 +41,7 @@
                 [user setUsername:lowercaseInput];
                 [user setEmail:lowercaseInput];
                 [user setPassword:self.passwordField.text];
-                [user signUpInBackgroundWithBlock:^(BOOL success, NSError*signUpError){
+                [user signUpInBackgroundWithBlock:^(BOOL success, NSError*signUpError) {
                     if(success == YES) {
                         [self loginSuccess];
                     }

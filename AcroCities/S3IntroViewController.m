@@ -19,6 +19,7 @@
 @interface S3IntroViewController () {
     IBOutlet UIViewController *_loginVC;
     PFGeoPoint *_lastKnownCurrentLocation;
+    NSArray *_lastKnownGames;
 }
 
 @end
@@ -65,6 +66,9 @@
 
 - (IBAction)startNewGame:(id)sender {
     S3GameCreatingViewController * gcvc = [[S3GameCreatingViewController alloc] initWithNibName:nil bundle:nil];
+    if(self.mapView.userLocation != nil) {
+        _lastKnownCurrentLocation = [PFGeoPoint geoPointWithLocation:self.mapView.userLocation.location];
+    }
     if (_lastKnownCurrentLocation != nil) {
         [gcvc setGameLocation:_lastKnownCurrentLocation];
     }
@@ -75,9 +79,18 @@
 
 - (void)foundGames:(NSArray *)gameArray fromSearchType:(kS3GameSearchType)searchType {
     for (PFObject *nextGame in gameArray) {
-        S3GamePoint *nextPoint = [[S3GamePoint alloc] initWithGame:nextGame];
-        [self.mapView addAnnotation:nextPoint];
+        BOOL match = NO;
+        for (PFObject *nextCachedGame in _lastKnownGames) {
+            if ([nextCachedGame.objectId isEqualToString:nextGame.objectId] == YES) {
+                match = YES;
+            }
+        }
+        if (!match) {
+            S3GamePoint *nextPoint = [[S3GamePoint alloc] initWithGame:nextGame];
+            [self.mapView addAnnotation:nextPoint];
+        }
     }
+    _lastKnownGames = gameArray;
 }
 
 #pragma mark - MKMapViewDelegate

@@ -13,6 +13,7 @@
 @interface S3GamePoint : NSObject <MKAnnotation>
 
 @property (readwrite, strong) PFObject *game;
+@property (readwrite, strong) MKAnnotationView *annotationView;
 
 - (id)initWithGame:(PFObject*)game;
 
