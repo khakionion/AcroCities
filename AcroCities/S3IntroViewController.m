@@ -42,6 +42,22 @@
     else {
         self.loggedInLabel.text = [NSString stringWithFormat:@"Logged in as %@",[[PFUser currentUser] email]];
         
+        __weak __typeof(&*self)weakSelf = self;
+        if ([[GKLocalPlayer localPlayer] isAuthenticated] == NO) {
+            [[GKLocalPlayer localPlayer] setAuthenticateHandler:^void(UIViewController* vc, NSError* err){
+                if(err) {
+                    NSLog(@"GameKit: %@",[err localizedDescription]);
+                }
+                else if([[GKLocalPlayer localPlayer] isAuthenticated]) {
+                    NSLog(@"Logged in to Game Center.");
+                }
+                else if(vc) {
+                    [weakSelf presentViewController:vc animated:YES completion:nil];
+                }
+            }];
+        }
+
+        
         [PFGeoPoint geoPointForCurrentLocationInBackground:^(PFGeoPoint* pfLoc, NSError *locError) {
             if (locError == nil) {
                 _lastKnownCurrentLocation = pfLoc;

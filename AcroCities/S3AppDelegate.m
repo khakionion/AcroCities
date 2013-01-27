@@ -33,19 +33,6 @@
     self.window.rootViewController = self.viewController;
     [self.window makeKeyAndVisible];
     
-    [[GKLocalPlayer localPlayer] setAuthenticateHandler:^void(UIViewController* vc, NSError* err){
-        if(err) {
-            NSLog(@"GameKit: %@",[err localizedDescription]);
-        }
-        else if([[GKLocalPlayer localPlayer] isAuthenticated]) {
-            NSLog(@"Logged in to Game Center.");
-        }
-        else if(vc) {
-            [self.window.rootViewController presentViewController:vc animated:YES completion:nil];
-        }
-    }];
-
-    
     return YES;
 }
 
