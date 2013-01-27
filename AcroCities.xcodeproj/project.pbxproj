@@ -8,6 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		744E09F216AA2F2B00C4003B /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 744E09F116AA2F2B00C4003B /* Settings.bundle */; };
+		DF5CD97416B4B84500EB8A17 /* S3LoadingMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF5CD97216B4B84500EB8A17 /* S3LoadingMessageViewController.m */; };
+		DF5CD97516B4B84500EB8A17 /* S3LoadingMessageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DF5CD97316B4B84500EB8A17 /* S3LoadingMessageViewController.xib */; };
+		DF5CD97916B4BC3A00EB8A17 /* S3LoginRegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF5CD97716B4BC3A00EB8A17 /* S3LoginRegisterViewController.m */; };
+		DF5CD97A16B4BC3A00EB8A17 /* S3LoginRegisterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DF5CD97816B4BC3A00EB8A17 /* S3LoginRegisterViewController.xib */; };
+		DF5CD98316B4D65E00EB8A17 /* UpsideDownShadow.png in Resources */ = {isa = PBXBuildFile; fileRef = DF5CD97F16B4D65E00EB8A17 /* UpsideDownShadow.png */; };
+		DF5CD98416B4D65E00EB8A17 /* UpsideDownShadow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DF5CD98016B4D65E00EB8A17 /* UpsideDownShadow@2x.png */; };
+		DF5CD98516B4D65E00EB8A17 /* VerticalShadow.png in Resources */ = {isa = PBXBuildFile; fileRef = DF5CD98116B4D65E00EB8A17 /* VerticalShadow.png */; };
+		DF5CD98616B4D65E00EB8A17 /* VerticalShadow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DF5CD98216B4D65E00EB8A17 /* VerticalShadow@2x.png */; };
 		DF82A92616A9116500F0F931 /* S3GameLobbyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF82A92416A9116500F0F931 /* S3GameLobbyViewController.m */; };
 		DF82A92716A9116500F0F931 /* S3GameLobbyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DF82A92516A9116500F0F931 /* S3GameLobbyViewController.xib */; };
 		DFA7FE6C1699067800F9BC4C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DFA7FE6B1699067800F9BC4C /* UIKit.framework */; };
@@ -47,6 +55,16 @@
 
 /* Begin PBXFileReference section */
 		744E09F116AA2F2B00C4003B /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
+		DF5CD97116B4B84500EB8A17 /* S3LoadingMessageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = S3LoadingMessageViewController.h; sourceTree = "<group>"; };
+		DF5CD97216B4B84500EB8A17 /* S3LoadingMessageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = S3LoadingMessageViewController.m; sourceTree = "<group>"; };
+		DF5CD97316B4B84500EB8A17 /* S3LoadingMessageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = S3LoadingMessageViewController.xib; sourceTree = "<group>"; };
+		DF5CD97616B4BC3A00EB8A17 /* S3LoginRegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = S3LoginRegisterViewController.h; sourceTree = "<group>"; };
+		DF5CD97716B4BC3A00EB8A17 /* S3LoginRegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = S3LoginRegisterViewController.m; sourceTree = "<group>"; };
+		DF5CD97816B4BC3A00EB8A17 /* S3LoginRegisterViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = S3LoginRegisterViewController.xib; sourceTree = "<group>"; };
+		DF5CD97F16B4D65E00EB8A17 /* UpsideDownShadow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = UpsideDownShadow.png; sourceTree = "<group>"; };
+		DF5CD98016B4D65E00EB8A17 /* UpsideDownShadow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "UpsideDownShadow@2x.png"; sourceTree = "<group>"; };
+		DF5CD98116B4D65E00EB8A17 /* VerticalShadow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = VerticalShadow.png; sourceTree = "<group>"; };
+		DF5CD98216B4D65E00EB8A17 /* VerticalShadow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "VerticalShadow@2x.png"; sourceTree = "<group>"; };
 		DF82A92316A9116500F0F931 /* S3GameLobbyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = S3GameLobbyViewController.h; sourceTree = "<group>"; };
 		DF82A92416A9116500F0F931 /* S3GameLobbyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = S3GameLobbyViewController.m; sourceTree = "<group>"; };
 		DF82A92516A9116500F0F931 /* S3GameLobbyViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = S3GameLobbyViewController.xib; sourceTree = "<group>"; };
@@ -124,6 +142,57 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		DF5CD97B16B4BD7000EB8A17 /* Intro and Login */ = {
+			isa = PBXGroup;
+			children = (
+				DFA7FE831699067800F9BC4C /* S3IntroViewController.h */,
+				DFA7FE841699067800F9BC4C /* S3IntroViewController.m */,
+				DFA7FE861699067800F9BC4C /* S3IntroViewController.xib */,
+				DF5CD97616B4BC3A00EB8A17 /* S3LoginRegisterViewController.h */,
+				DF5CD97716B4BC3A00EB8A17 /* S3LoginRegisterViewController.m */,
+				DF5CD97816B4BC3A00EB8A17 /* S3LoginRegisterViewController.xib */,
+			);
+			name = "Intro and Login";
+			sourceTree = "<group>";
+		};
+		DF5CD97C16B4BD8E00EB8A17 /* Creating and Finding Games */ = {
+			isa = PBXGroup;
+			children = (
+				DFB47422169AA9390019B53C /* S3GameFindingViewController.h */,
+				DFB47423169AA9390019B53C /* S3GameFindingViewController.m */,
+				DFB47424169AA9390019B53C /* S3GameFindingViewController.xib */,
+				DFACD203169C029B0088F6F9 /* S3GameCreatingViewController.h */,
+				DFACD204169C029B0088F6F9 /* S3GameCreatingViewController.m */,
+				DFACD205169C029B0088F6F9 /* S3GameCreatingViewController.xib */,
+				DFE09879169E9EF70014750C /* S3MyGamesViewController.h */,
+				DFE0987A169E9EF70014750C /* S3MyGamesViewController.m */,
+				DFE0987B169E9EF70014750C /* S3MyGamesViewController.xib */,
+			);
+			name = "Creating and Finding Games";
+			sourceTree = "<group>";
+		};
+		DF5CD97D16B4BDA300EB8A17 /* Gameplay */ = {
+			isa = PBXGroup;
+			children = (
+				DF82A92316A9116500F0F931 /* S3GameLobbyViewController.h */,
+				DF82A92416A9116500F0F931 /* S3GameLobbyViewController.m */,
+				DF82A92516A9116500F0F931 /* S3GameLobbyViewController.xib */,
+			);
+			name = Gameplay;
+			sourceTree = "<group>";
+		};
+		DF5CD97E16B4BDB300EB8A17 /* Utilities and Misc */ = {
+			isa = PBXGroup;
+			children = (
+				DFA7FE7A1699067800F9BC4C /* S3AppDelegate.h */,
+				DFA7FE7B1699067800F9BC4C /* S3AppDelegate.m */,
+				DF5CD97116B4B84500EB8A17 /* S3LoadingMessageViewController.h */,
+				DF5CD97216B4B84500EB8A17 /* S3LoadingMessageViewController.m */,
+				DF5CD97316B4B84500EB8A17 /* S3LoadingMessageViewController.xib */,
+			);
+			name = "Utilities and Misc";
+			sourceTree = "<group>";
+		};
 		DFA7FE5F1699067800F9BC4C = {
 			isa = PBXGroup;
 			children = (
@@ -170,24 +239,11 @@
 		DFA7FE711699067800F9BC4C /* AcroCities */ = {
 			isa = PBXGroup;
 			children = (
+				DF5CD97B16B4BD7000EB8A17 /* Intro and Login */,
+				DF5CD97C16B4BD8E00EB8A17 /* Creating and Finding Games */,
+				DF5CD97D16B4BDA300EB8A17 /* Gameplay */,
+				DF5CD97E16B4BDB300EB8A17 /* Utilities and Misc */,
 				DFA7FE721699067800F9BC4C /* Supporting Files */,
-				DFA7FE7A1699067800F9BC4C /* S3AppDelegate.h */,
-				DFA7FE7B1699067800F9BC4C /* S3AppDelegate.m */,
-				DFA7FE831699067800F9BC4C /* S3IntroViewController.h */,
-				DFA7FE841699067800F9BC4C /* S3IntroViewController.m */,
-				DFA7FE861699067800F9BC4C /* S3IntroViewController.xib */,
-				DFB47422169AA9390019B53C /* S3GameFindingViewController.h */,
-				DFB47423169AA9390019B53C /* S3GameFindingViewController.m */,
-				DFB47424169AA9390019B53C /* S3GameFindingViewController.xib */,
-				DFACD203169C029B0088F6F9 /* S3GameCreatingViewController.h */,
-				DFACD204169C029B0088F6F9 /* S3GameCreatingViewController.m */,
-				DFACD205169C029B0088F6F9 /* S3GameCreatingViewController.xib */,
-				DFE09879169E9EF70014750C /* S3MyGamesViewController.h */,
-				DFE0987A169E9EF70014750C /* S3MyGamesViewController.m */,
-				DFE0987B169E9EF70014750C /* S3MyGamesViewController.xib */,
-				DF82A92316A9116500F0F931 /* S3GameLobbyViewController.h */,
-				DF82A92416A9116500F0F931 /* S3GameLobbyViewController.m */,
-				DF82A92516A9116500F0F931 /* S3GameLobbyViewController.xib */,
 			);
 			path = AcroCities;
 			sourceTree = "<group>";
@@ -195,6 +251,10 @@
 		DFA7FE721699067800F9BC4C /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				DF5CD97F16B4D65E00EB8A17 /* UpsideDownShadow.png */,
+				DF5CD98016B4D65E00EB8A17 /* UpsideDownShadow@2x.png */,
+				DF5CD98116B4D65E00EB8A17 /* VerticalShadow.png */,
+				DF5CD98216B4D65E00EB8A17 /* VerticalShadow@2x.png */,
 				DFB4741F169919970019B53C /* AcroCities.entitlements */,
 				DFA7FE731699067800F9BC4C /* AcroCities-Info.plist */,
 				DFA7FE741699067800F9BC4C /* InfoPlist.strings */,
@@ -270,6 +330,12 @@
 				DFE0987D169E9EF70014750C /* S3MyGamesViewController.xib in Resources */,
 				DF82A92716A9116500F0F931 /* S3GameLobbyViewController.xib in Resources */,
 				744E09F216AA2F2B00C4003B /* Settings.bundle in Resources */,
+				DF5CD97516B4B84500EB8A17 /* S3LoadingMessageViewController.xib in Resources */,
+				DF5CD97A16B4BC3A00EB8A17 /* S3LoginRegisterViewController.xib in Resources */,
+				DF5CD98316B4D65E00EB8A17 /* UpsideDownShadow.png in Resources */,
+				DF5CD98416B4D65E00EB8A17 /* UpsideDownShadow@2x.png in Resources */,
+				DF5CD98516B4D65E00EB8A17 /* VerticalShadow.png in Resources */,
+				DF5CD98616B4D65E00EB8A17 /* VerticalShadow@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -287,6 +353,8 @@
 				DFACD206169C029C0088F6F9 /* S3GameCreatingViewController.m in Sources */,
 				DFE0987C169E9EF70014750C /* S3MyGamesViewController.m in Sources */,
 				DF82A92616A9116500F0F931 /* S3GameLobbyViewController.m in Sources */,
+				DF5CD97416B4B84500EB8A17 /* S3LoadingMessageViewController.m in Sources */,
+				DF5CD97916B4BC3A00EB8A17 /* S3LoginRegisterViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

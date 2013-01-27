@@ -7,13 +7,17 @@
 //
 
 #import "S3IntroViewController.h"
+#import "S3LoginRegisterViewController.h"
 #import "S3GameFindingViewController.h"
 #import "S3MyGamesViewController.h"
 
 #import <GameKit/GameKit.h>
 #import <Parse/Parse.h>
 
-@interface S3IntroViewController ()
+@interface S3IntroViewController () {
+    
+    IBOutlet UIViewController *_loginVC;
+}
 
 @end
 
@@ -31,15 +35,16 @@
 - (void)viewDidAppear:(BOOL)animated {
     //log us in yo
     if ([PFUser currentUser] == nil) {
-        [UIView animateWithDuration:1.0f animations:^(){
-            [self.registrationView setAlpha:1.0f];
-        }];
+        [self presentViewController:_loginVC animated:YES completion:^(){}];
     }
     else {
         self.loggedInLabel.text = [NSString stringWithFormat:@"Logged in as %@",[[PFUser currentUser] email]];
-        [self.loggedInView setAlpha:0.0f];
-        [UIView animateWithDuration:1.0f animations:^(){
-            [self.loggedInView setAlpha:1.0f];
+        
+        [PFGeoPoint geoPointForCurrentLocationInBackground:^(PFGeoPoint* pfLoc, NSError *locError) {
+            CLLocationCoordinate2D clLoc = CLLocationCoordinate2DMake([pfLoc latitude], [pfLoc longitude]);
+            [self.mapView setCenterCoordinate:clLoc];
+            MKCoordinateRegion mkRegion = MKCoordinateRegionMake(clLoc, MKCoordinateSpanMake(0.33, 0.33));
+            [self.mapView setRegion:mkRegion];
         }];
     }
 }
@@ -51,82 +56,17 @@
 }
 
 - (IBAction)showMyGames:(id)sender {
-    S3MyGamesViewController * mgvc = [[S3MyGamesViewController alloc] initWithNibName:@"S3MyGamesViewController" bundle:nil];
+    S3MyGamesViewController * mgvc = [[S3MyGamesViewController alloc] initWithNibName:nil bundle:nil];
     [self presentViewController:mgvc animated:YES completion:^(){}];
 }
 
 - (IBAction)findGames:(id)sender {
-    S3GameFindingViewController * gfvc = [[S3GameFindingViewController alloc] initWithNibName:@"S3GameFindingViewController" bundle:nil];
+    S3GameFindingViewController * gfvc = [[S3GameFindingViewController alloc] initWithNibName:nil bundle:nil];
     [self presentViewController:gfvc animated:YES completion:^(){}];
-}
-
-- (IBAction)registerUser:(id)sender {
-    PFUser * user = [PFUser user];
-    NSString * lowercaseInput = [self.usernameField.text lowercaseString];
-    [user setUsername:lowercaseInput];
-    [user setEmail:lowercaseInput];
-    [user setPassword:self.passwordField.text];
-    [user signUpInBackgroundWithBlock:^(BOOL succeeded, NSError* err){
-        if (succeeded) {
-            self.loggedInLabel.text = [NSString stringWithFormat:@"Logged in as %@",[[PFUser currentUser] email]];
-            [UIView animateWithDuration:1.0f animations:^(){
-                [self.registrationView setAlpha:0.0f];
-                [self.loggedInView setAlpha:1.0f];
-                
-            }];
-        }
-        else {
-            [self displayLoginError:err];
-        }
-    }];
-}
-
-- (IBAction)loginUser:(id)sender {
-    NSString * lowercaseInput = [self.usernameField.text lowercaseString];
-    [PFUser logInWithUsernameInBackground:lowercaseInput password:self.passwordField.text block:^(PFUser* user,NSError* err){
-        if (err == nil) {
-            self.loggedInLabel.text = [NSString stringWithFormat:@"Logged in as %@",[[PFUser currentUser] email]];
-            [UIView animateWithDuration:1.0f animations:^(){
-                [self.registrationView setAlpha:0.0f];
-                [self.loggedInView setAlpha:1.0f];
-            }];
-        }
-        else {
-            [self displayLoginError:err];
-        }
-    }];
 }
 
 - (IBAction)logOut:(id)sender {
     [PFUser logOut];
-    [self.loggedInView setAlpha:0.0f];
-    [self.registrationView setAlpha:1.0f];
-    [self.loadingSpinner setAlpha:0.0f];
-    [self.usernameField setText:@""];
-    [self.passwordField setText:@""];
 }
-
--(void) displayLoginError:(NSError*)err {
-    UIAlertView * loginFailAlert = [[UIAlertView alloc] initWithTitle:@"Error" message:[err localizedDescription] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
-    [loginFailAlert show];
-}
-
-#pragma mark - UITextFieldDelegate
-
-
-- (BOOL)textFieldShouldEndEditing:(UITextField *)textField {
-    return YES;
-}
-
-- (BOOL)textFieldShouldReturn:(UITextField *)textField {
-    if (textField == self.usernameField) {
-        [self.passwordField becomeFirstResponder];
-    }
-    else if(textField == self.passwordField) {
-        [self.passwordField resignFirstResponder];
-    }
-    return YES;
-}
-
 
 @end

@@ -102,6 +102,8 @@
     S3GameLobbyViewController* glvc = [[S3GameLobbyViewController alloc] initWithNibName:@"S3GameLobbyViewController" bundle:nil];
     [glvc setLobbyObject:selectedLobby];
     [self presentViewController:glvc animated:YES completion:^(){}];
+    [[tableView cellForRowAtIndexPath:indexPath] setSelected:NO];
+    
 }
 
 #pragma mark - Core location delegate
