@@ -13,7 +13,10 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *activeAcronym;
 @property (strong) PFObject* lobbyObject;
+@property (weak, nonatomic) IBOutlet UITextField *answerField;
 @property (weak, nonatomic) IBOutlet UINavigationBar *lobbyNavBar;
+@property (weak, nonatomic) IBOutlet UILabel *answerPromptLabel;
+@property (weak, nonatomic) IBOutlet UITableView *votingTableView;
 - (IBAction)leaveLobby:(id)sender;
 
 @end

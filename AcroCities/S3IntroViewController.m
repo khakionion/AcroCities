@@ -62,6 +62,7 @@
 
 - (IBAction)logOut:(id)sender {
     [PFUser logOut];
+    [self presentViewController:_loginVC animated:YES completion:^(){}];
 }
 
 - (IBAction)startNewGame:(id)sender {
