@@ -34,6 +34,8 @@
     [self.lobbyNavBar topItem].title = [self.lobbyObject valueForKey:@"lobbyName"];
     NSArray *acroList = [self.lobbyObject valueForKey:@"acronyms"];
     [self.activeAcronym setText:(NSString*)[acroList lastObject]];
+    [self.votingTableView setHidden:YES];
+    [self.votingPromptLabel setHidden:YES];
     PFQuery *answerQuery = [PFQuery queryWithClassName:@"Answer"];
     [answerQuery whereKey:@"user" equalTo:[PFUser currentUser]];
     [answerQuery whereKey:@"game" equalTo:self.lobbyObject];
@@ -68,6 +70,7 @@
     NSArray *acronyms = [self.lobbyObject valueForKey:@"acronyms"];
     NSArray *guesses = [[result lastObject] valueForKey:@"guesses"];
     if ([acronyms count] == [guesses count]) {
+        self.answerField.borderStyle = UITextBorderStyleNone;
         self.answerField.enabled = NO;
         self.answerField.text = [guesses lastObject];
         self.answerPromptLabel.text = NSLocalizedString(@"You answered: ", @"Prompt text that indicates the user has already answered this acronym.");
@@ -88,6 +91,8 @@
         NSPredicate *thisRoundOnly = [NSPredicate predicateWithFormat:@"guesses.@count == %i", [[self.lobbyObject valueForKey:@"acronyms"] count]];
         _lobbyAnswers = [result filteredArrayUsingPredicate:thisRoundOnly];
         [self.votingTableView reloadData];
+        [self.votingPromptLabel setHidden:NO];
+        [self.votingTableView setHidden:NO];
     }
 }
 

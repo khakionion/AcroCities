@@ -16,6 +16,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *answerField;
 @property (weak, nonatomic) IBOutlet UINavigationBar *lobbyNavBar;
 @property (weak, nonatomic) IBOutlet UILabel *answerPromptLabel;
+@property (weak, nonatomic) IBOutlet UILabel *votingPromptLabel;
 @property (weak, nonatomic) IBOutlet UITableView *votingTableView;
 - (IBAction)leaveLobby:(id)sender;
 
