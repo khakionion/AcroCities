@@ -26,7 +26,8 @@
 {
     [super viewDidLoad];
     [self.lobbyNavBar topItem].title = [self.lobbyObject valueForKey:@"lobbyName"];
-    [self.activeAcronym setText:[self.lobbyObject valueForKey:@"acronym"]];
+    NSArray *acroList = [self.lobbyObject valueForKey:@"acronyms"];
+    [self.activeAcronym setText:(NSString*)[acroList lastObject]];
 }
 
 - (void)didReceiveMemoryWarning

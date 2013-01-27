@@ -1,3 +1,5 @@
+var acronymRounds = [3,3,4,4,5];
+
 var generateRandomAcronym = function (length) {
 	var answer = "";
 	for(var i=0;i<length;++i) {
@@ -8,9 +10,15 @@ var generateRandomAcronym = function (length) {
 
 Parse.Cloud.beforeSave("Game", function (request, response) {
 	var game = request.object;
-	if(!game.has("acronym")) {
-		var acronym = generateRandomAcronym(5);
-		game.set("acronym",acronym);
+	var acronyms = game.get("acronyms") || [];
+	if(acronyms.length >= acronymRounds.length) {
+		//this round is expired
+	}
+	else {
+		var acronymLength = acronymRounds[acronyms.length];
+		var acronym = generateRandomAcronym(acronymLength);
+		acronyms.push(acronym);
+		game.set("acronyms", acronyms);
 	}
 	response.success();
 });

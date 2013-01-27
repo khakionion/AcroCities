@@ -12,6 +12,8 @@
 
 @interface S3GameCreatingViewController ()
 
+- (void)displayCreationError:(NSError*)err;
+
 @end
 
 @implementation S3GameCreatingViewController
@@ -57,4 +59,11 @@
 - (IBAction)cancelAction:(id)sender {
     [self dismissViewControllerAnimated:YES completion:^(){}];
 }
+
+-(void) displayCreationError:(NSError*)err {
+    UIAlertView * failAlert = [[UIAlertView alloc] initWithTitle:@"Error" message:[err localizedDescription] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+    [failAlert show];
+}
+
+
 @end
