@@ -18,7 +18,6 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
     }
     return self;
 }
@@ -39,4 +38,16 @@
 - (IBAction)leaveLobby:(id)sender {
     [self dismissViewControllerAnimated:YES completion:^(){}];
 }
+
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
+    NSLog(@"Now we've got: %@",string);
+    return YES;
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    NSLog(@"Submitting.");
+    [textField resignFirstResponder];
+    return YES;
+}
+
 @end
