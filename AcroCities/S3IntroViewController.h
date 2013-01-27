@@ -8,18 +8,19 @@
 
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
+#import "S3GameSearching.h"
 
-@interface S3IntroViewController : UIViewController
+@interface S3IntroViewController : UIViewController <S3GameResultHandler, MKMapViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 
 //UI for logged in users
 @property (weak, nonatomic) IBOutlet UILabel *loggedInLabel;
-@property (weak, nonatomic) IBOutlet UIButton *findGameButton;
+@property (weak, nonatomic) IBOutlet UIButton *createGameButton;
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
 
 - (IBAction)showMyGames:(id)sender;
-- (IBAction)findGames:(id)sender;
 - (IBAction)logOut:(id)sender;
+- (IBAction)startNewGame:(id)sender;
 
 @end
