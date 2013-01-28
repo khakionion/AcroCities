@@ -23,6 +23,8 @@
     NSArray *_lastKnownGames;
 }
 
+- (void)newGameFound:(NSNotification*)notification;
+
 @end
 
 @implementation S3IntroViewController
@@ -43,6 +45,8 @@
     }
     else {
         self.loggedInLabel.text = [NSString stringWithFormat:@"Logged in as %@",[[PFUser currentUser] email]];
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(newGameFound:) name:kS3AcroGameCreatedNotification object:nil];
         
         __weak __typeof(&*self)weakSelf = self;
         if ([[GKLocalPlayer localPlayer] isAuthenticated] == NO) {
@@ -80,13 +84,32 @@
 
 - (IBAction)startNewGame:(id)sender {
     S3GameCreatingViewController * gcvc = [[S3GameCreatingViewController alloc] initWithNibName:nil bundle:nil];
-    if(self.mapView.userLocation != nil) {
-        _lastKnownCurrentLocation = [PFGeoPoint geoPointWithLocation:self.mapView.userLocation.location];
+    if(self.mapController.mapView.userLocation != nil) {
+        CLLocation *loc = self.mapController.mapView.userLocation.location;
+        _lastKnownCurrentLocation = [PFGeoPoint geoPointWithLocation:loc];
     }
     if (_lastKnownCurrentLocation != nil) {
         [gcvc setGameLocation:_lastKnownCurrentLocation];
     }
     [self presentViewController:gcvc animated:YES completion:^{}];
+}
+
+- (IBAction)reportBug:(id)sender {
+    if ([MFMessageComposeViewController canSendText]) {
+        MFMailComposeViewController *bugReporter = [[MFMailComposeViewController alloc] init];
+        [bugReporter setToRecipients:@[@"development@sunseaskyfactory.com"]];
+        [bugReporter setSubject:@"AcroCities Bug Report"];
+        [bugReporter setMessageBody:@"Hey! I found a bug with AcroCities: \n" isHTML:NO];
+        [bugReporter setMailComposeDelegate:self];
+        [self presentViewController:bugReporter animated:YES completion:^(){}];
+    }
+}
+
+- (void)newGameFound:(NSNotification*)notification {
+    PFObject *game = notification.object;
+    S3GameLobbyViewController *glvc = [[S3GameLobbyViewController alloc] initWithNibName:nil bundle:nil];
+    [glvc setLobbyObject:game];
+    [self presentViewController:glvc animated:YES completion:^{}];
 }
 
 #pragma mark - S3GameMapDelegate
@@ -96,6 +119,12 @@
     S3GameLobbyViewController *glvc = [[S3GameLobbyViewController alloc] initWithNibName:nil bundle:nil];
     [glvc setLobbyObject:game];
     [self presentViewController:glvc animated:YES completion:^{}];
+}
+
+#pragma mark - MFMailComposeViewControllerDelegate
+
+- (void)mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error {
+    [controller dismissViewControllerAnimated:YES completion:^{}];
 }
 
 @end

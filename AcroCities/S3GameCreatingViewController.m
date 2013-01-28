@@ -10,6 +10,8 @@
 
 #import <Parse/Parse.h>
 
+NSString *kS3AcroGameCreatedNotification = @"kS3AcroGameCreatedNotification";
+
 @interface S3GameCreatingViewController ()
 
 - (void)displayCreationError:(NSError*)err;
@@ -50,7 +52,9 @@
     }
     [self.creationSpinner startAnimating];
     [gameObject saveInBackgroundWithBlock:^(BOOL success, NSError* error){
-        [self dismissViewControllerAnimated:YES completion:^(){}];
+        [self dismissViewControllerAnimated:YES completion:^(){
+            [[NSNotificationCenter defaultCenter] postNotificationName:kS3AcroGameCreatedNotification object:gameObject];
+        }];
         [self.creationSpinner stopAnimating];
     }];
 }

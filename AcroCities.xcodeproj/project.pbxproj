@@ -18,6 +18,9 @@
 		DF5CD98416B4D65E00EB8A17 /* UpsideDownShadow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DF5CD98016B4D65E00EB8A17 /* UpsideDownShadow@2x.png */; };
 		DF5CD98516B4D65E00EB8A17 /* VerticalShadow.png in Resources */ = {isa = PBXBuildFile; fileRef = DF5CD98116B4D65E00EB8A17 /* VerticalShadow.png */; };
 		DF5CD98616B4D65E00EB8A17 /* VerticalShadow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DF5CD98216B4D65E00EB8A17 /* VerticalShadow@2x.png */; };
+		DF7ED29316B660C80004D382 /* bug.png in Resources */ = {isa = PBXBuildFile; fileRef = DF7ED29116B660C80004D382 /* bug.png */; };
+		DF7ED29416B660C80004D382 /* bug@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DF7ED29216B660C80004D382 /* bug@2x.png */; };
+		DF7ED29616B662410004D382 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF7ED29516B662410004D382 /* MessageUI.framework */; };
 		DF82A92616A9116500F0F931 /* S3GameLobbyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF82A92416A9116500F0F931 /* S3GameLobbyViewController.m */; };
 		DF82A92716A9116500F0F931 /* S3GameLobbyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DF82A92516A9116500F0F931 /* S3GameLobbyViewController.xib */; };
 		DFA085BB16B5F58C003868E5 /* S3GameMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DFA085BA16B5F58C003868E5 /* S3GameMapViewController.m */; };
@@ -70,6 +73,9 @@
 		DF5CD98016B4D65E00EB8A17 /* UpsideDownShadow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "UpsideDownShadow@2x.png"; sourceTree = "<group>"; };
 		DF5CD98116B4D65E00EB8A17 /* VerticalShadow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = VerticalShadow.png; sourceTree = "<group>"; };
 		DF5CD98216B4D65E00EB8A17 /* VerticalShadow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "VerticalShadow@2x.png"; sourceTree = "<group>"; };
+		DF7ED29116B660C80004D382 /* bug.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bug.png; sourceTree = "<group>"; };
+		DF7ED29216B660C80004D382 /* bug@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bug@2x.png"; sourceTree = "<group>"; };
+		DF7ED29516B662410004D382 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		DF82A92316A9116500F0F931 /* S3GameLobbyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = S3GameLobbyViewController.h; sourceTree = "<group>"; };
 		DF82A92416A9116500F0F931 /* S3GameLobbyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = S3GameLobbyViewController.m; sourceTree = "<group>"; };
 		DF82A92516A9116500F0F931 /* S3GameLobbyViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = S3GameLobbyViewController.xib; sourceTree = "<group>"; };
@@ -121,6 +127,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DF7ED29616B662410004D382 /* MessageUI.framework in Frameworks */,
 				DFB47428169AAA090019B53C /* MapKit.framework in Frameworks */,
 				DFB47421169A91040019B53C /* GameKit.framework in Frameworks */,
 				DFA7FEA216990B2800F9BC4C /* Accounts.framework in Frameworks */,
@@ -203,6 +210,7 @@
 		DFA7FE5F1699067800F9BC4C = {
 			isa = PBXGroup;
 			children = (
+				DF7ED29516B662410004D382 /* MessageUI.framework */,
 				DFA7FE711699067800F9BC4C /* AcroCities */,
 				DFA7FE6A1699067800F9BC4C /* Frameworks */,
 				DFA7FE691699067800F9BC4C /* Products */,
@@ -258,6 +266,8 @@
 		DFA7FE721699067800F9BC4C /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				DF7ED29116B660C80004D382 /* bug.png */,
+				DF7ED29216B660C80004D382 /* bug@2x.png */,
 				DF5CD97F16B4D65E00EB8A17 /* UpsideDownShadow.png */,
 				DF5CD98016B4D65E00EB8A17 /* UpsideDownShadow@2x.png */,
 				DF5CD98116B4D65E00EB8A17 /* VerticalShadow.png */,
@@ -342,6 +352,8 @@
 				DF5CD98416B4D65E00EB8A17 /* UpsideDownShadow@2x.png in Resources */,
 				DF5CD98516B4D65E00EB8A17 /* VerticalShadow.png in Resources */,
 				DF5CD98616B4D65E00EB8A17 /* VerticalShadow@2x.png in Resources */,
+				DF7ED29316B660C80004D382 /* bug.png in Resources */,
+				DF7ED29416B660C80004D382 /* bug@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -8,10 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
+#import <MessageUI/MessageUI.h>
 #import "S3GameSearching.h"
 #import "S3GameMapViewController.h"
 
-@interface S3IntroViewController : UIViewController <MKMapViewDelegate, S3GameMapDelegate>
+@interface S3IntroViewController : UIViewController <MKMapViewDelegate, S3GameMapDelegate, MFMailComposeViewControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 
@@ -20,11 +21,12 @@
 @property (weak, nonatomic) IBOutlet UILabel *globalGamesLabel;
 @property (weak, nonatomic) IBOutlet UIButton *createGameButton;
 @property (weak, nonatomic) IBOutlet UIButton *myGamesButton;
-@property (weak, nonatomic) IBOutlet MKMapView *mapView;
 @property (strong, nonatomic) IBOutlet S3GameMapViewController *mapController;
 
 - (IBAction)showMyGames:(id)sender;
 - (IBAction)logOut:(id)sender;
 - (IBAction)startNewGame:(id)sender;
+- (IBAction)reportBug:(id)sender;
+
 
 @end

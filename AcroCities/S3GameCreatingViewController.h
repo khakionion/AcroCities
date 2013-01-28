@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 #import <Parse/Parse.h>
 
+extern NSString *kS3AcroGameCreatedNotification;
+
 @interface S3GameCreatingViewController : UIViewController
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *creationSpinner;
 @property (weak, nonatomic) IBOutlet UITextField *lobbyNameField;
