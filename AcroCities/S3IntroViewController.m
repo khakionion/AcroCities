@@ -58,6 +58,12 @@
                 }
             }];
         }
+        PFQuery *allGames = [PFQuery queryWithClassName:@"Game"];
+        [allGames countObjectsInBackgroundWithBlock:^(int number, NSError *error) {
+            if (error == nil) {
+                self.globalGamesLabel.text = [NSString stringWithFormat:@"%i games active worldwide", number];
+            }
+        }];
     }
 }
 

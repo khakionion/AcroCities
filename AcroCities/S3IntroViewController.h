@@ -17,6 +17,7 @@
 
 //UI for logged in users
 @property (weak, nonatomic) IBOutlet UILabel *loggedInLabel;
+@property (weak, nonatomic) IBOutlet UILabel *globalGamesLabel;
 @property (weak, nonatomic) IBOutlet UIButton *createGameButton;
 @property (weak, nonatomic) IBOutlet UIButton *myGamesButton;
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
