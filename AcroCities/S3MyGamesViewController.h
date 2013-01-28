@@ -8,7 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-@interface S3MyGamesViewController : UITableViewController
+@interface S3MyGamesViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
+@property (strong, nonatomic) IBOutlet UITableViewController *tableViewController;
+
+
+
 - (IBAction)cancelAction:(id)sender;
 
 @end

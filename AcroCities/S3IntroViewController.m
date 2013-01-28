@@ -69,6 +69,7 @@
 
 - (IBAction)showMyGames:(id)sender {
     S3MyGamesViewController * mgvc = [[S3MyGamesViewController alloc] initWithNibName:nil bundle:nil];
+    [mgvc setModalTransitionStyle:UIModalTransitionStyleCrossDissolve];
     [self presentViewController:mgvc animated:YES completion:^(){}];
 }
 

@@ -20,9 +20,9 @@
 
 @implementation S3MyGamesViewController
 
-- (id)initWithStyle:(UITableViewStyle)style
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
-    self = [super initWithStyle:style];
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
     }
@@ -37,7 +37,7 @@
     [myGamesQuery whereKey:@"creator" equalTo:[[PFUser currentUser] email]];
     [myGamesQuery findObjectsInBackgroundWithBlock:^(NSArray* objects, NSError* error) {
         _foundGames = objects;
-        [self.tableView reloadData];
+        [self.tableViewController.tableView reloadData];
     }];
 
     // Uncomment the following line to preserve selection between presentations.
