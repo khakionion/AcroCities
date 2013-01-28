@@ -20,6 +20,7 @@
 		DF5CD98616B4D65E00EB8A17 /* VerticalShadow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DF5CD98216B4D65E00EB8A17 /* VerticalShadow@2x.png */; };
 		DF82A92616A9116500F0F931 /* S3GameLobbyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF82A92416A9116500F0F931 /* S3GameLobbyViewController.m */; };
 		DF82A92716A9116500F0F931 /* S3GameLobbyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DF82A92516A9116500F0F931 /* S3GameLobbyViewController.xib */; };
+		DFA085BB16B5F58C003868E5 /* S3GameMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DFA085BA16B5F58C003868E5 /* S3GameMapViewController.m */; };
 		DFA7FE6C1699067800F9BC4C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DFA7FE6B1699067800F9BC4C /* UIKit.framework */; };
 		DFA7FE6E1699067800F9BC4C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DFA7FE6D1699067800F9BC4C /* Foundation.framework */; };
 		DFA7FE701699067800F9BC4C /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DFA7FE6F1699067800F9BC4C /* CoreGraphics.framework */; };
@@ -72,6 +73,8 @@
 		DF82A92316A9116500F0F931 /* S3GameLobbyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = S3GameLobbyViewController.h; sourceTree = "<group>"; };
 		DF82A92416A9116500F0F931 /* S3GameLobbyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = S3GameLobbyViewController.m; sourceTree = "<group>"; };
 		DF82A92516A9116500F0F931 /* S3GameLobbyViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = S3GameLobbyViewController.xib; sourceTree = "<group>"; };
+		DFA085B916B5F58C003868E5 /* S3GameMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = S3GameMapViewController.h; sourceTree = "<group>"; };
+		DFA085BA16B5F58C003868E5 /* S3GameMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = S3GameMapViewController.m; sourceTree = "<group>"; };
 		DFA7FE681699067800F9BC4C /* AcroCities.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AcroCities.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DFA7FE6B1699067800F9BC4C /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		DFA7FE6D1699067800F9BC4C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -169,6 +172,8 @@
 				DF2ADA0716B4E2A300B2534D /* S3GameSearching.m */,
 				DF2ADA0916B4EB2300B2534D /* S3GamePoint.h */,
 				DF2ADA0A16B4EB2300B2534D /* S3GamePoint.m */,
+				DFA085B916B5F58C003868E5 /* S3GameMapViewController.h */,
+				DFA085BA16B5F58C003868E5 /* S3GameMapViewController.m */,
 			);
 			name = "Creating and Finding Games";
 			sourceTree = "<group>";
@@ -357,6 +362,7 @@
 				DF5CD97916B4BC3A00EB8A17 /* S3LoginRegisterViewController.m in Sources */,
 				DF2ADA0816B4E2A300B2534D /* S3GameSearching.m in Sources */,
 				DF2ADA0B16B4EB2300B2534D /* S3GamePoint.m in Sources */,
+				DFA085BB16B5F58C003868E5 /* S3GameMapViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
